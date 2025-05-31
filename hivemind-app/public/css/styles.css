@@ -1,0 +1,343 @@
+/* Main stylesheet for HiveMind application */
+
+/* Global styles */
+:root {
+  --primary-color: #3300ff;
+  --secondary-color: #33cc99;
+  --white: #ffffff;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #333333;
+  --error-color: #ff3333;
+  --success-color: #00cc66;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header styles */
+header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 1rem 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--secondary-color);
+}
+
+/* Navigation styles */
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 1.5rem;
+}
+
+nav ul li a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: var(--secondary-color);
+}
+
+/* Main content styles */
+main {
+  padding: 2rem 0;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--medium-gray);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #2900cc; /* Darker shade of primary color */
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+  background-color: #2aa880; /* Darker shade of secondary color */
+}
+
+/* Alert messages */
+.alert {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.alert-error {
+  background-color: #ffebee;
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+/* Dashboard styles */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0.5rem 0;
+}
+
+.stat-label {
+  color: var(--dark-gray);
+  font-size: 1.1rem;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+th {
+  background-color: var(--light-gray);
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: var(--light-gray);
+}
+
+/* Message styles */
+.message-list {
+  list-style: none;
+}
+
+.message-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--medium-gray);
+  transition: background-color 0.3s;
+}
+
+.message-item:hover {
+  background-color: var(--light-gray);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.message-sender {
+  font-weight: bold;
+}
+
+.message-date {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.message-subject {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.message-content {
+  margin-top: 1rem;
+}
+
+.unread {
+  font-weight: bold;
+  background-color: #f0f7ff;
+}
+
+/* Footer styles */
+footer {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--secondary-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  nav ul {
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 0.75rem;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+  }
+  
+  .footer-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Observation form specific styles */
+.observation-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .observation-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Status indicators */
+.status-active {
+  color: var(--success-color);
+}
+
+.status-inactive {
+  color: #ff9800;
+}
+
+.status-suspended {
+  color: var(--error-color);
+}

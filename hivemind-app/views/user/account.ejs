@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiveMind - Account Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Hive<span>Mind</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/observation/dashboard">Dashboard</a></li>
+                    <li><a href="/observation/new">New Observation</a></li>
+                    <li><a href="/observation/history">History</a></li>
+                    <li><a href="/account">My Account</a></li>
+                    <li><a href="/messages">Messages</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card">
+                <h1 class="card-title">Account Management</h1>
+                
+                <% if (typeof error !== 'undefined') { %>
+                    <div class="alert alert-error">
+                        <%= error %>
+                    </div>
+                <% } %>
+                
+                <% if (typeof success !== 'undefined') { %>
+                    <div class="alert alert-success">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
+                <form action="/account" method="POST" id="accountForm">
+                    <div class="form-group">
+                        <label for="username">Email Address (Username)</label>
+                        <input type="email" id="username" value="<%= user.username %>" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="forename">Forename</label>
+                        <input type="text" id="forename" name="forename" value="<%= user.forename %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname" name="surname" value="<%= user.surname %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" required><%= user.address %></textarea>
+                    </div>
+                    
+                    <% if (user.category === 'observer') { %>
+                        <h2>Payment Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="cardNumber">Credit/Debit Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" maxlength="16" placeholder="************<%= user.cardNumberLast4 %>">
+                            <small>Leave blank to keep current card. Enter full 16-digit number to update.</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" name="cardName" value="<%= user.cardName %>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardType">Card Type</label>
+                            <select id="cardType" name="cardType">
+                                <option value="Visa" <%= user.cardType === 'Visa' ? 'selected' : '' %>>Visa</option>
+                                <option value="Mastercard" <%= user.cardType === 'Mastercard' ? 'selected' : '' %>>Mastercard</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardCVV">CVV (3 digits)</label>
+                            <input type="text" id="cardCVV" name="cardCVV" maxlength="3" placeholder="***">
+                            <small>Leave blank to keep current CVV. Enter 3-digit number to update.</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Notification Preference</label>
+                            <div>
+                                <input type="radio" id="notifyEmail" name="notificationPreference" value="email" <%= user.notificationPreference === 'email' ? 'checked' : '' %>>
+                                <label for="notifyEmail">Email</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="notifyText" name="notificationPreference" value="text" <%= user.notificationPreference === 'text' ? 'checked' : '' %>>
+                                <label for="notifyText">Text</label>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn">Update Account</button>
+                    </div>
+                </form>
+                
+                <div style="margin-top: 2rem;">
+                    <h2>Account Status</h2>
+                    <p>Current Status: <span class="status-<%= user.accountStatus %>"><%= user.accountStatus.charAt(0).toUpperCase() + user.accountStatus.slice(1) %></span></p>
+                    
+                    <% if (user.category === 'observer') { %>
+                        <p>Account Balance: $<%= user.accountBalance.toFixed(2) %></p>
+                    <% } %>
+                    
+                    <div style="margin-top: 1rem;">
+                        <a href="/account/password" class="btn btn-secondary">Change Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>HiveMind</h3>
+                <p>Enhancing humanity's collective knowledge through universal internet access.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/observation/dashboard">Dashboard</a></li>
+                    <li><a href="/observation/new">New Observation</a></li>
+                    <li><a href="/account">My Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: support@hivemind.org</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="container" style="text-align: center; margin-top: 1rem;">
+            <p>&copy; 2025 HiveMind. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/validation.js"></script>
+</body>
+</html>

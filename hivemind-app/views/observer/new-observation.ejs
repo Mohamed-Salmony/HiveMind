@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiveMind - New Observation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Hive<span>Mind</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/observation/dashboard">Dashboard</a></li>
+                    <li><a href="/observation/new">New Observation</a></li>
+                    <li><a href="/observation/history">History</a></li>
+                    <li><a href="/account">My Account</a></li>
+                    <li><a href="/messages">Messages</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card">
+                <h1 class="card-title">Submit New Observation</h1>
+                
+                <% if (typeof error !== 'undefined') { %>
+                    <div class="alert alert-error">
+                        <%= error %>
+                    </div>
+                <% } %>
+                
+                <form action="/observation/new" method="POST" id="observationForm" class="observation-form">
+                    <div class="form-group">
+                        <label for="date">Date (YYYYMMDD)</label>
+                        <input type="text" id="date" name="date" placeholder="20250419" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Time (hh:mm:ss)</label>
+                        <input type="text" id="time" name="time" placeholder="14:30:00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeZoneOffset">Time Zone Offset</label>
+                        <input type="text" id="timeZoneOffset" name="timeZoneOffset" placeholder="UTC-10:00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="w3w">What3words Coordinates</label>
+                        <input type="text" id="w3w" name="w3w" placeholder="filled.count.soap" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="latitude">Latitude (Decimal Degrees)</label>
+                        <input type="number" id="latitude" name="latitude" step="0.000001" placeholder="37.123456" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="longitude">Longitude (Decimal Degrees)</label>
+                        <input type="number" id="longitude" name="longitude" step="0.000001" placeholder="-122.123456" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="freeSpacePathLoss">Free Space Path Loss</label>
+                        <input type="number" id="freeSpacePathLoss" name="freeSpacePathLoss" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bitErrorRate">Bit Error Rate (BER)</label>
+                        <input type="number" id="bitErrorRate" name="bitErrorRate" step="0.000001" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="temperature">Temperature (°C)</label>
+                        <input type="number" id="temperature" name="temperature" step="0.1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="humidity">Humidity (g/kg)</label>
+                        <input type="number" id="humidity" name="humidity" step="0.1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="snowfall">Snowfall (cm)</label>
+                        <input type="number" id="snowfall" name="snowfall" step="0.1" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="windSpeed">Wind Speed (km/h)</label>
+                        <input type="number" id="windSpeed" name="windSpeed" step="0.1" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="windDirection">Wind Direction (decimal degrees)</label>
+                        <input type="number" id="windDirection" name="windDirection" step="0.1" min="0" max="360" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="precipitation">Precipitation (mm)</label>
+                        <input type="number" id="precipitation" name="precipitation" step="0.1" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="haze">Haze (%)</label>
+                        <input type="number" id="haze" name="haze" step="0.1" min="0" max="100" required>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="grid-column: span 2;">
+                        <button type="submit" class="btn">Submit Observation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>HiveMind</h3>
+                <p>Enhancing humanity's collective knowledge through universal internet access.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/observation/dashboard">Dashboard</a></li>
+                    <li><a href="/observation/new">New Observation</a></li>
+                    <li><a href="/account">My Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: support@hivemind.org</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="container" style="text-align: center; margin-top: 1rem;">
+            <p>&copy; 2025 HiveMind. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/validation.js"></script>
+</body>
+</html>
